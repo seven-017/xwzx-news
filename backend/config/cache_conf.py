@@ -10,7 +10,7 @@ redis_client = redis.Redis(
     port=6379, # redis的端口号
     db=0,# 选择的数据库索引，默认是0
     decode_responses=True,# 是否将redis返回的字符串解码为python对象，默认是False
-    #⚠️ 本机 Redis 服务端是 5.0.14，而 redis-py 8.x 默认用 RESP3 协议（会先发 HELLO 命令，
+    # 注意：本机 Redis 服务端是 5.0.14，而 redis-py 8.x 默认用 RESP3 协议（会先发 HELLO 命令，
     #HELLO 是 Redis 6.0 才有的）。不指定 protocol=2 会直接报 unknown command `HELLO`。
     protocol=2
 )

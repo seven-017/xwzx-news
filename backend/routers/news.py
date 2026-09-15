@@ -1,6 +1,6 @@
 from fastapi import APIRouter,Depends,Query,HTTPException
 from config.db_conf import get_db
-from crud import news
+from crud import news,news_cache
 from sqlalchemy.ext.asyncio import AsyncSession
 from models.news import News
 
@@ -12,7 +12,7 @@ router = APIRouter(prefix="/api/news",tags=["news"])
 @router.get("/categories")
 async def get_categories(skip:int=0,limit:int=100,db=Depends(get_db)):
 
-    categories = await news.get_categories(db, skip, limit)
+    categories = await news_cache.get_categories(db, skip, limit)
     return {
         "code":200,
         "msg":"获取分类成功",
